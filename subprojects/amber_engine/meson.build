@@ -1,12 +1,17 @@
 project('amber_engine', 'c')
 
-engine_includes = include_directories('include')
-engine_lib = shared_library('amber_engine', 'src/engine.c',
-  include_directories: engine_includes,
+engine_deps = [
+  dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep'])
+]
+engine_lib = executable('amber_engine', [
+    'src/main.c',
+    'src/engine.c',
+    'src/bindings/proc_table.c',
+  ],
+  dependencies: engine_deps,
 )
 
 amber_engine_dep = declare_dependency(
-  include_directories: engine_includes,
   link_with: engine_lib,
 )
 set_variable(meson.project_name() + '_dep', amber_engine_dep)
