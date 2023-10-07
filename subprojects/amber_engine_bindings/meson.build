@@ -1,4 +1,10 @@
-project('amber_engine_bindings', 'c')
+project(
+  'amber_engine_bindings', 
+  'c',
+  default_options: {
+    'warning_level': 'everything',
+  },
+)
 
 
 engine_deps = [

@@ -1,7 +1,14 @@
-project('amber_engine', 'c')
+project(
+  'amber_engine', 
+  'c',
+  default_options: {
+    'warning_level': 'everything',
+  },
+)
 
 engine_deps = [
-  dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep'])
+  dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
+  dependency('tomlc99', fallback: ['tomlc99', 'tomlc99_dep'])
 ]
 engine_lib = executable('amber_engine', [
     'src/main.c',
