@@ -1,7 +1,6 @@
 #include "config.h"
-#include "amber_engine/config/config.h"
-#include "tinydir/tinydir.h"
-#include "tomlc99/toml.h"
+
+#include "../memory/memory.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -16,8 +15,8 @@ static ae_ParseConfig_Error ae_parse_config(toml_table_t* table, ae_Config* out_
   if (!game_target.ok) {
     return AE_PARSECONFIGERROR_INVALID_GAME_SECTION;
   }
-  out_config->game_target = strdup(game_target.u.s); // Todo: free
-
+  out_config->game_target = game_target.u.s;
+  
   return AE_PARSECONFIGERROR_SUCCESS;
 }
 
@@ -43,7 +42,7 @@ const char* ae_locate_config_file_in_dir(tinydir_dir* search_dir) {
       !file.is_dir &&
       strcmp(file.name, AE_CONFIG_DEFAULT_NAME) == 0
     ) {
-      return strdup(file.path);
+      return ae_strdup(file.path);
     }
 
     tinydir_next(search_dir);
@@ -56,6 +55,7 @@ ae_ParseConfig_Error ae_config_init_from_file(const char* file_name, ae_Config* 
   FILE* file = fopen(file_name, "r");
   toml_table_t* table = toml_parse_file(file, NULL, 0);
   if (!table) {
+    toml_free(table);
     fclose(file);
     return AE_PARSECONFIGERROR_COULD_NOT_PARSE;
   }
@@ -91,6 +91,6 @@ void ae_config_init_from_default(ae_Config* out_config) {
 }
 
 void ae_config_free(ae_Config* config) {
-  free((void*)(config->game_target));
+  ae_free((void*)(config->game_target));
   config->game_target = 0;
 }

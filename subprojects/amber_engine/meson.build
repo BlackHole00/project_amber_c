@@ -7,15 +7,21 @@ project(
   },
 )
 
+cmake = import('cmake')
+
+mimalloc_project = cmake.subproject('mimalloc')
+
 engine_deps = [
   dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
   dependency('tomlc99', fallback: ['tomlc99', 'tomlc99_dep']),
-  dependency('tinydir', fallback: ['tinydir', 'tinydir_dep'])
+  dependency('tinydir', fallback: ['tinydir', 'tinydir_dep']),
+  mimalloc_project.dependency('mimalloc')
 ]
 engine_lib = executable('amber_engine', [
     'src/main.c',
     'src/engine.c',
     'src/config/config.c',
+    'src/memory/memory.c',
     'src/bindings/proc_table.c',
   ],
   dependencies: engine_deps,

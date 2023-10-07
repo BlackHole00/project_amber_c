@@ -1,9 +1,14 @@
 project('tinydir', 'c')
 
-engine_includes = include_directories('.')
+cmake = import('cmake')
+
+engine_includes = include_directories('include')
 
 amber_engine_common_dep = declare_dependency(
   include_directories: engine_includes,
+  dependencies: [
+    cmake.subproject('mimalloc').dependency('mimalloc'),
+  ]
 )
 set_variable(meson.project_name() + '_dep', amber_engine_common_dep)
 

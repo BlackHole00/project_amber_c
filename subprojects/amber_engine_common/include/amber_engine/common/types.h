@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -24,6 +25,7 @@
 #define f32 float
 #define f64 double
 
+#define usize size_t
 
 #define ae_tagged_union struct
 
