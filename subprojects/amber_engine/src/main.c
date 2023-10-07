@@ -4,30 +4,39 @@
 #include <assert.h>
 
 #include <tomlc99/toml.h>
+#include <flecs.h>
 #include <mimalloc.h>
 
 #include "config/config.h"
 #include "memory/memory.h"
 #include "bindings/proc_table.h"
 
-#define i_key f32
-#include <stc/cvec.h>
-#include <stc/ccommon.h>
+typedef struct {
+  float x, y;
+} Position, Velocity;
+
+void Move(ecs_iter_t *it) {
+  Position *p = ecs_field(it, Position, 1);
+  Velocity *v = ecs_field(it, Velocity, 2);
+
+  for (int i = 0; i < it->count; i++) {
+    p[i].x += v[i].x;
+    p[i].y += v[i].y;
+  }
+}
+
+void Print(ecs_iter_t* it) {
+  Position *p = ecs_field(it, Position, 1);
+
+  for (int i = 0; i < it->count; i++) {
+    printf("%f %f\n", p->x, p->y);
+  }
+}
 
 int main(void) {
   ae_defaultallocator_init();
   ae_proctable_init();
 
-  cvec_f32 vec = {0};
-  cvec_f32_push(&vec, 1.0f);
-  cvec_f32_push(&vec, 2.0f);
-  cvec_f32_push(&vec, 3.0f);
-  cvec_f32_push(&vec, 4.0f);
-  
-  c_foreach(i, cvec_f32, vec) {
-    printf("%f\n", *i.ref);
-  }
-  
   ae_Config config;
   const char* config_location = ae_locate_config_file();
 
@@ -35,16 +44,26 @@ int main(void) {
     ae_config_init_from_default(&config);
   } else {
     assert(ae_config_init_from_file(config_location, &config) == AE_PARSECONFIGERROR_SUCCESS);
+    ae_free((void*)(config_location));
   }
 
   printf("%s\n", config.game_target);
+
+  ecs_world_t *ecs = ecs_init();
+
+  ECS_COMPONENT(ecs, Position);
+  ECS_COMPONENT(ecs, Velocity);
+
+  ECS_SYSTEM(ecs, Move, EcsOnUpdate, Position, Velocity);
+  ECS_SYSTEM(ecs, Print, EcsOnUpdate, Position, Velocity);
+
+  ecs_entity_t e = ecs_new_id(ecs);
+  ecs_set(ecs, e, Position, {10, 20});
+  ecs_set(ecs, e, Velocity, {1, 2});
+
+  while (ecs_progress(ecs, 0)) { }
   
-  ae_free((void*)(config_location));
   ae_config_free(&config);
-
-  ae_free(ae_alloc(6553600));
-
-  ae_memory_report();
   ae_defaultallocator_deinit();
   
   return 0;
