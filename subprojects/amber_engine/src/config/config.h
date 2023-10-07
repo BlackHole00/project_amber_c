@@ -1,4 +1,5 @@
 #pragma once
+#include "../memory/library_definitions.h"
 
 #include <tomlc99/toml.h>
 #include <stdio.h>

@@ -7,3 +7,6 @@
 [submodule "subprojects/mimalloc"]
 	path = subprojects/mimalloc
 	url = https://github.com/microsoft/mimalloc.git
+[submodule "subprojects/STC"]
+	path = subprojects/STC
+	url = https://github.com/stclib/STC.git

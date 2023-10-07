@@ -1,4 +1,5 @@
 #pragma once
+#include "../memory/library_definitions.h"
 
 #include <amber_engine/bindings/proc_table.h>
 

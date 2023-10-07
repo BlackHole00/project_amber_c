@@ -4,31 +4,27 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#define u8 uint8_t
-#define u16 uint16_t
-#define u32 uint32_t
-#define u64 uint64_t
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint64_t u64;
 
-#define i8 int8_t
-#define i16 int16_t
-#define i32 int32_t
-#define i64 int64_t
+typedef int8_t i8;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
 
-#ifndef uint
-#define uint uint8_t
-#endif
+typedef uint8_t byte;
+typedef int8_t sbyte;
+typedef uint8_t ubyte;
 
-#define byte uint8_t
-#define sbyte int8_t
-#define ubyte uint8_t
+typedef float f32;
+typedef double f64;
 
-#define f32 float
-#define f64 double
+typedef size_t usize;
 
-#define usize size_t
-
-#define ae_tagged_union struct
+#define ae_tagged_union struct 
 
 // Used in union. Since void cannot be used since it has no size, you can use none.
-#define ae_none uint8_t
+typedef uint8_t ae_none;
 

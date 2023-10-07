@@ -1,3 +1,5 @@
+#include "memory/library_definitions.h"
+
 #include <stdio.h>
 #include <assert.h>
 
@@ -8,9 +10,23 @@
 #include "memory/memory.h"
 #include "bindings/proc_table.h"
 
+#define i_key f32
+#include <stc/cvec.h>
+#include <stc/ccommon.h>
+
 int main(void) {
   ae_defaultallocator_init();
   ae_proctable_init();
+
+  cvec_f32 vec = {0};
+  cvec_f32_push(&vec, 1.0f);
+  cvec_f32_push(&vec, 2.0f);
+  cvec_f32_push(&vec, 3.0f);
+  cvec_f32_push(&vec, 4.0f);
+  
+  c_foreach(i, cvec_f32, vec) {
+    printf("%f\n", *i.ref);
+  }
   
   ae_Config config;
   const char* config_location = ae_locate_config_file();

@@ -1,4 +1,5 @@
 #pragma once
+#include "library_definitions.h"
 
 #include <amber_engine/common/types.h>
 #include <amber_engine/memory/allocator.h>
