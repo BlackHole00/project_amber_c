@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -12,7 +13,9 @@
 #define i32 int32_t
 #define i64 int64_t
 
-#define uint unsigned int
+#ifndef uint
+#define uint uint8_t
+#endif
 
 #define byte uint8_t
 #define sbyte int8_t
@@ -26,3 +29,4 @@
 
 // Used in union. Since void cannot be used since it has no size, you can use none.
 #define ae_none uint8_t
+

@@ -2,7 +2,8 @@ project(
   'tomlc99', 
   'c',
   default_options: {
-    'warning_level': 'everything',
+    'warning_level': '3',
+    'c_std': 'c17',
   },
 )
 

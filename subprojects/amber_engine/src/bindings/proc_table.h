@@ -4,4 +4,5 @@
 
 extern aeb_ProcTable AE_PROC_TABLE;
 
-void ae_proctable_init();
+void ae_proctable_init(void);
+

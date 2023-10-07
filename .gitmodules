@@ -1,3 +1,6 @@
 [submodule "subprojects/tomlc99/tomlc99"]
 	path = subprojects/tomlc99/tomlc99
 	url = https://github.com/cktan/tomlc99.git
+[submodule "subprojects/tinydir/tinydir"]
+	path = subprojects/tinydir/tinydir
+	url = https://github.com/cxong/tinydir.git

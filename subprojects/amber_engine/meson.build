@@ -2,17 +2,20 @@ project(
   'amber_engine', 
   'c',
   default_options: {
-    'warning_level': 'everything',
+    'warning_level': '3',
+    'c_std': 'c17',
   },
 )
 
 engine_deps = [
   dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
-  dependency('tomlc99', fallback: ['tomlc99', 'tomlc99_dep'])
+  dependency('tomlc99', fallback: ['tomlc99', 'tomlc99_dep']),
+  dependency('tinydir', fallback: ['tinydir', 'tinydir_dep'])
 ]
 engine_lib = executable('amber_engine', [
     'src/main.c',
     'src/engine.c',
+    'src/config/config.c',
     'src/bindings/proc_table.c',
   ],
   dependencies: engine_deps,
