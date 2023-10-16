@@ -16,7 +16,6 @@ engine_deps = [
   dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
   dependency('tomlc99', fallback: ['tomlc99', 'tomlc99_dep']),
   dependency('tinydir', fallback: ['tinydir', 'tinydir_dep']),
-  dependency('flecs', fallback: ['flecs', 'flecs_dep']),
   mimalloc_project.dependency('mimalloc'),
   stc_project.dependency('stc'),
 ]
@@ -26,6 +25,7 @@ engine_lib = executable('amber_engine', [
     'src/config/config.c',
     'src/memory/memory.c',
     'src/bindings/proc_table.c',
+    'src/common/stc_implementation.c'
   ],
   dependencies: engine_deps,
 )

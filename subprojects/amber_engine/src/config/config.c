@@ -20,20 +20,20 @@ static ae_ParseConfig_Error ae_parse_config(toml_table_t* table, ae_Config* out_
   return AE_PARSECONFIGERROR_SUCCESS;
 }
 
-const char* ae_locate_config_file(void) {
+bool ae_locate_config_file(cstr* out_location) {
   tinydir_dir current_directory;
   if (tinydir_open(&current_directory, ".") != 0) {
-    return NULL;
+    return false;
   }
   
-  const char* result = ae_locate_config_file_in_dir(&current_directory);
+  bool result = ae_locate_config_file_in_dir(&current_directory, out_location);
 
   tinydir_close(&current_directory);
 
   return result;
 }
 
-const char* ae_locate_config_file_in_dir(tinydir_dir* search_dir) {
+bool ae_locate_config_file_in_dir(tinydir_dir* search_dir, cstr* out_location) {
   while(search_dir->has_next) {
     tinydir_file file;
     tinydir_readfile(search_dir, &file);
@@ -42,17 +42,18 @@ const char* ae_locate_config_file_in_dir(tinydir_dir* search_dir) {
       !file.is_dir &&
       strcmp(file.name, AE_CONFIG_DEFAULT_NAME) == 0
     ) {
-      return ae_strdup(file.path);
+      *out_location = cstr_from(file.path);
+      return true;
     }
 
     tinydir_next(search_dir);
   }
 
-  return NULL;
+  return false;
 }
 
-ae_ParseConfig_Error ae_config_init_from_file(const char* file_name, ae_Config* out_config) {
-  FILE* file = fopen(file_name, "r");
+ae_ParseConfig_Error ae_config_init_from_file(csview file_name, ae_Config* out_config) {
+  FILE* file = fopen(file_name.buf, "r");
   toml_table_t* table = toml_parse_file(file, NULL, 0);
   if (!table) {
     toml_free(table);
@@ -62,7 +63,7 @@ ae_ParseConfig_Error ae_config_init_from_file(const char* file_name, ae_Config* 
 
   out_config->source = (ae_ConfigSource){
     .type = AE_CONFIGSOURCETYPE_FROM_FILE,
-    .value.file = file_name, 
+    .value.file = file_name.buf, 
   };
   
   ae_ParseConfig_Error result = ae_parse_config(table, out_config);
