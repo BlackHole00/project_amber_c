@@ -1,6 +1,6 @@
 #pragma once
 
-#define ae_static static inline
+#define ae_inline static inline
 
 #if defined(_MSC_VER)
   //  Microsoft 

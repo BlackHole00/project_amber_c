@@ -7,9 +7,12 @@ project(
   },
 )
 
+cmake = import('cmake')
+stc_project = cmake.subproject('STC')
 
 engine_deps = [
-  dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep'])
+  dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
+  stc_project.dependency('stc')
 ]
 engine_includes = include_directories('include')
 engine_lib = static_library('amber_engine_bindings', 'src/bindings/bindings.c',
