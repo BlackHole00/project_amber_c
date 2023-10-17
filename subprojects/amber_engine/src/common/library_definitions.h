@@ -1,6 +1,6 @@
 #pragma once
 
-#include "memory.h"
+#include "../memory/memory.h"
 
 #define _TINYDIR_MALLOC ae_alloc
 #define _TINYDIR_FREE ae_free

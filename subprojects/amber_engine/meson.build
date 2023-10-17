@@ -11,6 +11,7 @@ cmake = import('cmake')
 
 mimalloc_project = cmake.subproject('mimalloc')
 stc_project = cmake.subproject('STC')
+c_logger = cmake.subproject('c-logger')
 
 engine_deps = [
   dependency('amber_engine_common', fallback: ['amber_engine_common', 'amber_engine_common_dep']),
@@ -18,6 +19,7 @@ engine_deps = [
   dependency('tinydir', fallback: ['tinydir', 'tinydir_dep']),
   mimalloc_project.dependency('mimalloc'),
   stc_project.dependency('stc'),
+  c_logger.dependency('logger'),
 ]
 engine_lib = executable('amber_engine', [
     'src/main.c',
@@ -25,6 +27,7 @@ engine_lib = executable('amber_engine', [
     'src/config/config.c',
     'src/memory/memory.c',
     'src/bindings/proc_table.c',
+    'src/runtime/executor.c',
     'src/common/stc_implementation.c'
   ],
   dependencies: engine_deps,

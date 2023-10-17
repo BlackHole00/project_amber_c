@@ -1,5 +1,5 @@
 #pragma once
-#include "../memory/library_definitions.h"
+#include "../common/library_definitions.h"
 
 #include <amber_engine/common/types.h>
 #include <amber_engine/runtime/executor.h>
@@ -27,3 +27,4 @@ void ae_executor_free(ae_ExecutorImpl* executor);
 
 void ae_executor_register_system(ae_ExecutorImpl* executor, ae_ExecutionSystem system);
 
+void ae_executor_get_current_phase(ae_ExecutorImpl* executor);

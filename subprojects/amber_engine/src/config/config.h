@@ -1,5 +1,5 @@
 #pragma once
-#include "../memory/library_definitions.h"
+#include "../common/library_definitions.h"
 
 #include <stc/cstr.h>
 #include <tomlc99/toml.h>

@@ -1,4 +1,4 @@
-#include "memory/library_definitions.h"
+#include "common/library_definitions.h"
 
 #include <stdio.h>
 #include <assert.h>

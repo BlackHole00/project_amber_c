@@ -10,3 +10,6 @@
 [submodule "subprojects/STC"]
 	path = subprojects/STC
 	url = https://github.com/stclib/STC.git
+[submodule "subprojects/c-logger"]
+	path = subprojects/c-logger
+	url = https://github.com/yksz/c-logger.git
