@@ -1,12 +1,13 @@
 #pragma once
 
+#include "amber_engine/runtime/system_manager.h"
 #include <amber_engine/memory/allocator.h>
-#include <amber_engine/runtime/executor.h>
+#include <amber_engine/runtime/system_manager.h>
 
 typedef const char* (*aeb_get_version_proc)(void);
 typedef ae_Allocator* (*aeb_get_defaultallocator)(void);
 
-typedef ae_Executor* (*aeb_get_executor)(void);
-typedef void (*aeb_executor_register_system)(ae_Executor* executor, ae_ExecutionSystem system);
-typedef const void* (*aeb_executor_get_system_data)(ae_Executor* executor, const char* identifier);
+typedef ae_SystemManager* (*aeb_get_systemmanager)(void);
+typedef void (*aeb_systemmanager_register_system)(ae_SystemManager* executor, ae_System system);
+typedef const void* (*aeb_systemmanager_get_system_data)(ae_SystemManager* executor, const char* identifier);
 

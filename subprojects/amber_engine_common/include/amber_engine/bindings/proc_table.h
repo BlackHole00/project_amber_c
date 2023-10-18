@@ -7,7 +7,7 @@ typedef struct {
 
 	aeb_get_defaultallocator      get_defaultallocator;
 
-  aeb_get_executor              get_executor;
-  aeb_executor_register_system  executor_register_system;
-  aeb_executor_get_system_data  executor_get_system_data;
+  aeb_get_systemmanager         get_systemmanager;
+  aeb_systemmanager_register_system  systemmanager_register_system;
+  aeb_systemmanager_get_system_data  systemmanager_get_system_data;
 } aeb_ProcTable;

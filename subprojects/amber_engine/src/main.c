@@ -1,4 +1,3 @@
-#include "amber_engine/runtime/executor.h"
 #include "common/library_definitions.h"
 
 #include <stdio.h>
@@ -12,7 +11,7 @@
 #include "memory/memory.h"
 #include "bindings/proc_table.h"
 #include "src/common/c-logger.h"
-#include "src/runtime/executor.h"
+#include "src/runtime/system_manager.h"
 
 void ae_init(void) {
   ae_Config config;
@@ -43,10 +42,10 @@ int main(void) {
   // ae_config_free(&config);
   //
 
-  ae_ExecutorImpl executor;
-  ae_executor_init(&executor);
+  ae_SystemManager sm;
+  ae_systemmanager_init(&sm);
 
-  ae_executor_free(&executor);
+  ae_systemmanager_free(&sm);
 
   LOG_INFO("Exiting. Freeing last entry systems");
 
