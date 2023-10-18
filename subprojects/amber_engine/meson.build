@@ -24,6 +24,7 @@ engine_deps = [
 engine_lib = executable('amber_engine', [
     'src/main.c',
     'src/engine.c',
+    'src/globals.c',
     'src/config/config.c',
     'src/memory/memory.c',
     'src/bindings/proc_table.c',

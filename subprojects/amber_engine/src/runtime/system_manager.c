@@ -70,8 +70,7 @@ static void ae_systemmanager_create_execution_order_helper(
   cqueue_int_push(stack, current_idx);
 }
 
-static void
-ae_systemmanager_create_execution_order(ae_SystemManager *system_manager) {
+static void ae_systemmanager_create_execution_order(ae_SystemManager *system_manager) {
   // TOPOLOGICAL Sort
   cvec_u32_clear(&system_manager->execution_order);
 
