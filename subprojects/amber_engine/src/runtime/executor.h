@@ -8,6 +8,11 @@
 #include <stc/cvec.h>
 #undef i_key
 
+#define i_key u32
+#define i_use_cmp
+#include <stc/cvec.h>
+#undef i_key
+
 #define i_key_str
 #define i_val u32
 #define i_type cmap_ExecutionSystem_Lookup
@@ -20,6 +25,7 @@ typedef struct {
   cvec_ae_ExecutionSystem systems;
 
   cmap_ExecutionSystem_Lookup lookup;
+  cvec_u32 execution_order;
 } ae_ExecutorImpl;
 
 void ae_executor_init(ae_ExecutorImpl* executor);
@@ -28,3 +34,7 @@ void ae_executor_free(ae_ExecutorImpl* executor);
 void ae_executor_register_system(ae_ExecutorImpl* executor, ae_ExecutionSystem system);
 
 void ae_executor_get_current_phase(ae_ExecutorImpl* executor);
+void ae_executor_prepare_for_execution(ae_ExecutorImpl* executor);
+void ae_executor_tick_current_phase(ae_ExecutorImpl* executor);
+void ae_executor_run(ae_ExecutorImpl* executor);
+

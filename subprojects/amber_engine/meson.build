@@ -28,7 +28,8 @@ engine_lib = executable('amber_engine', [
     'src/memory/memory.c',
     'src/bindings/proc_table.c',
     'src/runtime/executor.c',
-    'src/common/stc_implementation.c'
+    'src/common/stc_implementation.c',
+    'src/common/c-logger.c'
   ],
   dependencies: engine_deps,
 )

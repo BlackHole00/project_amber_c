@@ -2,7 +2,11 @@
 
 #include "../common/types.h"
 #include <stc/cstr.h>
-#include <stdbool.h>
+
+// TODO: allocator support between engine and game.
+#define i_key_str
+#include <stc/cvec.h>
+#undef i_key_str
 
 typedef struct ae_Executor ae_Executor;
 
@@ -89,6 +93,7 @@ typedef struct {
 typedef struct {
   cstr identifier;
   void* system_data;
+  cvec_str dependencies;
 
   ae_ExecutionSystem_ProcTable* proc_table;
 } ae_ExecutionSystem;
