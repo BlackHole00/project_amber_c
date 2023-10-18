@@ -4,9 +4,15 @@
 #include "src/memory/memory.h"
 #include "stc/ccommon.h"
 
-#define i_key_str
-#include <stc/cset.h>
-#undef i_key_str
+#define i_key int
+#include <stc/cqueue.h>
+#undef i_key
+
+#define i_key bool
+#define i_type cvec_bool
+#include <stc/cvec.h>
+#undef i_key
+#undef i_type
 
 static void ae_executionsystem_free(ae_System *system) {
   switch (system->user_data_handling_strategy.type) {
@@ -43,37 +49,49 @@ static void ae_executionsystem_free(ae_System *system) {
   }
 }
 
+static void ae_systemmanager_create_execution_order_helper(
+  ae_SystemManager* system_manager, 
+  cqueue_int* stack,
+  cvec_bool* visited,
+  int current_idx
+) {
+  *cvec_bool_at_mut(visited, current_idx) = true;
+
+  const ae_System* system = cvec_ae_System_at(&system_manager->systems, current_idx);
+  for (int i = 0; i < system->dependencies_count; i++) {
+    const char* dependency = system->dependencies[i];
+    int dependency_idx = cmap_System_Lookup_get(&system_manager->lookup, dependency)->second;
+
+    if (!*cvec_bool_at(visited, dependency_idx)) {
+      ae_systemmanager_create_execution_order_helper(system_manager, stack, visited, dependency_idx);
+    }
+  }
+
+  cqueue_int_push(stack, current_idx);
+}
+
 static void
 ae_systemmanager_create_execution_order(ae_SystemManager *system_manager) {
-  // cset_str inserted_systems = cset_str_init();
-  //
-  //  cvec_u32_clear(&systemmanager->execution_order);
+  // TOPOLOGICAL Sort
+  cvec_u32_clear(&system_manager->execution_order);
 
-  // for(int i = 0; i < cvec_ae_ExecutionSystem_size(&systemmanager->systems);
-  // i++) { ae_ExecutionSystem* system =
-  // cvec_ae_ExecutionSystem_at_mut(&systemmanager->systems, i);
-  //
-  // if (
-  // cvec_str_size(&system->dependencies) <= 0 ||
-  // !cset_str_contains(&inserted_systems, cstr_str(&system->identifier))
-  // ) {
-  //     cvec_u32_push_back(&systemmanager->execution_order, i);
-  //     continue;
-  //   }
-  //
-  //   c_foreach(dependency, cvec_str, system->dependencies) {
-  //     const u32* dependency_index =
-  //     cmap_ExecutionSystem_Lookup_at(&systemmanager->lookup,
-  //     cstr_str(dependency.ref));
-  //
-  //     cvec_u32_iter result = cvec_u32_find(&systemmanager->execution_order,
-  //     *dependency_index); assert(result.ref != NULL);
-  //
-  //     cvec_u32_insert_at(&systemmanager->execution_order, result, i);
-  //   }
-  // }
-  //
-  // cset_str_drop(&inserted_systems);
+  int system_count = cvec_ae_System_size(&system_manager->systems);
+  cqueue_int stack = cqueue_int_init();
+  cvec_bool visited = cvec_bool_with_size(system_count, false);
+
+  for (int i = 0; i < system_count; i++) {
+    if (!*cvec_bool_at(&visited, i)) {
+      ae_systemmanager_create_execution_order_helper(system_manager, &stack, &visited, i);
+    }
+  } 
+
+  while (cqueue_int_size(&stack) > 0) {
+    int idx = cqueue_int_pull(&stack);
+    cvec_u32_push_back(&system_manager->execution_order, idx);
+  }
+
+  cqueue_int_drop(&stack);
+  cvec_bool_drop(&visited);
 }
 
 void ae_systemmanager_init(ae_SystemManager *system_manager) {

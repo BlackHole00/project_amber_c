@@ -1,3 +1,5 @@
+#include "amber_engine/memory/handling_strategy.h"
+#include "amber_engine/runtime/system_manager.h"
 #include "common/library_definitions.h"
 
 #include <stdio.h>
@@ -12,6 +14,7 @@
 #include "bindings/proc_table.h"
 #include "src/common/c-logger.h"
 #include "src/runtime/system_manager.h"
+#include "stc/ccommon.h"
 
 void ae_init(void) {
   ae_Config config;
@@ -44,6 +47,42 @@ int main(void) {
 
   ae_SystemManager sm;
   ae_systemmanager_init(&sm);
+
+  ae_systemmanager_register_system(&sm, (ae_System) {
+    .identifier = "C",
+    .dependencies = (const char*[]){ "A", "B" },
+    .dependencies_count = 2,
+    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
+      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
+    }
+  });
+  ae_systemmanager_register_system(&sm, (ae_System) {
+    .identifier = "A",
+    .dependencies = (const char*[]){ "B" },
+    .dependencies_count = 1,
+    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
+      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
+    }
+  });
+  ae_systemmanager_register_system(&sm, (ae_System) {
+    .identifier = "B",
+    .dependencies_count = 0,
+    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
+      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
+    }
+  });
+
+  ae_systemmanager_prepare_for_execution(&sm);
+
+  LOG_INFO("Systems: ");
+  c_foreach(system, cvec_ae_System, sm.systems) {
+    LOG_INFO("\t %s", system.ref->identifier);
+  }
+
+  LOG_INFO("Execution order: ");
+  c_foreach(system_idx, cvec_u32, sm.execution_order) {
+    LOG_INFO("\t %s", cvec_ae_System_at(&sm.systems, *system_idx.ref)->identifier);
+  }
 
   ae_systemmanager_free(&sm);
 

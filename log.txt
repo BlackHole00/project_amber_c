@@ -63,3 +63,85 @@ T 23-10-18 19:32:01.518609 1257811 main.c:20: Locating config file...
 T 23-10-18 19:32:01.518709 1257811 main.c:27: Initializing config from file
 T 23-10-18 19:32:01.518766 1257811 main.c:31: Engine config loaded
 I 23-10-18 19:32:01.518772 1257811 main.c:50: Exiting. Freeing last entry systems
+I 23-10-18 22:32:19.718324 1300156 main.c:38: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:32:19.719099 1300156 main.c:20: Locating config file...
+T 23-10-18 22:32:19.719209 1300156 main.c:27: Initializing config from file
+T 23-10-18 22:32:19.719483 1300156 main.c:31: Engine config loaded
+I 23-10-18 22:32:19.719493 1300156 main.c:50: Exiting. Freeing last entry systems
+I 23-10-18 22:41:38.055154 1307028 main.c:38: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:41:38.055634 1307028 main.c:20: Locating config file...
+T 23-10-18 22:41:38.055889 1307028 main.c:27: Initializing config from file
+T 23-10-18 22:41:38.055931 1307028 main.c:31: Engine config loaded
+I 23-10-18 22:41:38.055935 1307028 main.c:50: Exiting. Freeing last entry systems
+I 23-10-18 22:41:45.470373 1307317 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:41:45.471344 1307317 main.c:23: Locating config file...
+T 23-10-18 22:41:45.471480 1307317 main.c:30: Initializing config from file
+T 23-10-18 22:41:45.471567 1307317 main.c:34: Engine config loaded
+I 23-10-18 22:42:12.186044 1307786 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:42:12.186979 1307786 main.c:23: Locating config file...
+T 23-10-18 22:42:12.187096 1307786 main.c:30: Initializing config from file
+T 23-10-18 22:42:12.187182 1307786 main.c:34: Engine config loaded
+I 23-10-18 22:42:12.187198 1307786 main.c:69: Systems: 
+I 23-10-18 22:42:12.187204 1307786 main.c:71: 	 A
+I 23-10-18 22:42:12.187210 1307786 main.c:71: 	 B
+I 23-10-18 22:42:12.187215 1307786 main.c:74: Execution order: 
+I 23-10-18 22:42:12.187221 1307786 main.c:81: Exiting. Freeing last entry systems
+I 23-10-18 22:44:04.498070 1310158 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:44:04.498566 1310158 main.c:23: Locating config file...
+T 23-10-18 22:44:04.498633 1310158 main.c:30: Initializing config from file
+T 23-10-18 22:44:04.498673 1310158 main.c:34: Engine config loaded
+I 23-10-18 22:44:13.598791 1310158 main.c:69: Systems: 
+I 23-10-18 22:44:13.598866 1310158 main.c:71: 	 A
+I 23-10-18 22:44:13.598877 1310158 main.c:71: 	 B
+I 23-10-18 22:44:13.598884 1310158 main.c:74: Execution order: 
+I 23-10-18 22:44:13.598895 1310158 main.c:81: Exiting. Freeing last entry systems
+I 23-10-18 22:50:34.786135 1315410 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:50:34.787110 1315410 main.c:23: Locating config file...
+T 23-10-18 22:50:34.787245 1315410 main.c:30: Initializing config from file
+T 23-10-18 22:50:34.787329 1315410 main.c:34: Engine config loaded
+I 23-10-18 22:50:34.787346 1315410 main.c:69: Systems: 
+I 23-10-18 22:50:34.787352 1315410 main.c:71: 	 A
+I 23-10-18 22:50:34.787358 1315410 main.c:71: 	 B
+I 23-10-18 22:50:34.787363 1315410 main.c:74: Execution order: 
+I 23-10-18 22:50:34.787368 1315410 main.c:76: 	 B
+I 23-10-18 22:50:34.787373 1315410 main.c:76: 	 A
+I 23-10-18 22:50:34.787378 1315410 main.c:81: Exiting. Freeing last entry systems
+I 23-10-18 22:51:17.159812 1315956 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:51:17.160855 1315956 main.c:23: Locating config file...
+T 23-10-18 22:51:17.160987 1315956 main.c:30: Initializing config from file
+T 23-10-18 22:51:17.161085 1315956 main.c:34: Engine config loaded
+I 23-10-18 22:51:17.161105 1315956 main.c:77: Systems: 
+I 23-10-18 22:51:17.161111 1315956 main.c:79: 	 C
+I 23-10-18 22:51:17.161117 1315956 main.c:79: 	 A
+I 23-10-18 22:51:17.161121 1315956 main.c:79: 	 B
+I 23-10-18 22:51:17.161126 1315956 main.c:82: Execution order: 
+I 23-10-18 22:51:17.161132 1315956 main.c:84: 	 B
+I 23-10-18 22:51:17.161137 1315956 main.c:84: 	 A
+I 23-10-18 22:51:17.161142 1315956 main.c:84: 	 C
+I 23-10-18 22:51:17.161148 1315956 main.c:89: Exiting. Freeing last entry systems
+I 23-10-18 22:51:49.399322 1316467 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:51:49.400538 1316467 main.c:23: Locating config file...
+T 23-10-18 22:51:49.400699 1316467 main.c:30: Initializing config from file
+T 23-10-18 22:51:49.400794 1316467 main.c:34: Engine config loaded
+I 23-10-18 22:51:49.400812 1316467 main.c:78: Systems: 
+I 23-10-18 22:51:49.400818 1316467 main.c:80: 	 C
+I 23-10-18 22:51:49.400824 1316467 main.c:80: 	 A
+I 23-10-18 22:51:49.400829 1316467 main.c:80: 	 B
+I 23-10-18 22:51:49.400834 1316467 main.c:83: Execution order: 
+I 23-10-18 22:51:49.400841 1316467 main.c:85: 	 B
+I 23-10-18 22:51:49.400846 1316467 main.c:85: 	 A
+I 23-10-18 22:51:49.400850 1316467 main.c:85: 	 C
+I 23-10-18 22:51:49.400856 1316467 main.c:90: Exiting. Freeing last entry systems
+I 23-10-18 22:52:01.973891 1316806 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-18 22:52:01.974725 1316806 main.c:23: Locating config file...
+T 23-10-18 22:52:01.974850 1316806 main.c:30: Initializing config from file
+T 23-10-18 22:52:01.974917 1316806 main.c:34: Engine config loaded
+I 23-10-18 22:52:01.974931 1316806 main.c:77: Systems: 
+I 23-10-18 22:52:01.974937 1316806 main.c:79: 	 C
+I 23-10-18 22:52:01.974941 1316806 main.c:79: 	 A
+I 23-10-18 22:52:01.974946 1316806 main.c:79: 	 B
+I 23-10-18 22:52:01.974950 1316806 main.c:82: Execution order: 
+I 23-10-18 22:52:01.974954 1316806 main.c:84: 	 B
+I 23-10-18 22:52:01.974958 1316806 main.c:84: 	 A
+I 23-10-18 22:52:01.974963 1316806 main.c:84: 	 C
+I 23-10-18 22:52:01.974968 1316806 main.c:89: Exiting. Freeing last entry systems
