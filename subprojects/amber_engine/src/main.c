@@ -46,14 +46,6 @@ int main(void) {
   ae_ExecutorImpl executor;
   ae_executor_init(&executor);
 
-  ae_executor_register_system(&executor, (ae_ExecutionSystem) {
-    .dependencies = cvec_str_init(),
-    .identifier = cstr_lit("Test"),
-  });
-
-  cvec_str deps = cvec_str_init();
-  cvec_str_emplace(&deps, "test");
-
   ae_executor_free(&executor);
 
   LOG_INFO("Exiting. Freeing last entry systems");

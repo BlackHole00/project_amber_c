@@ -4,6 +4,8 @@
 #include <amber_engine/common/types.h>
 #include <amber_engine/runtime/executor.h>
 
+#include <stc/cstr.h>
+
 #define i_key ae_ExecutionSystem
 #include <stc/cvec.h>
 #undef i_key

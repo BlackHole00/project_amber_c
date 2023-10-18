@@ -13,3 +13,13 @@ T 23-10-17 18:59:22.625908 1027187 main.c:19: Locating config file...
 T 23-10-17 18:59:22.626035 1027187 main.c:26: Initializing config from file
 T 23-10-17 18:59:22.626121 1027187 main.c:30: Engine config loaded
 I 23-10-17 18:59:22.626130 1027187 main.c:43: Exiting. Freeing last entry systems
+I 23-10-18 19:02:20.176605 1226943 main.c:39: Successfully initialized entry systems. Initializing engine
+T 23-10-18 19:02:20.177353 1226943 main.c:21: Locating config file...
+T 23-10-18 19:02:20.177481 1226943 main.c:28: Initializing config from file
+T 23-10-18 19:02:20.177583 1226943 main.c:32: Engine config loaded
+I 23-10-18 19:02:20.177589 1226943 main.c:51: Exiting. Freeing last entry systems
+I 23-10-18 19:04:09.253480 1233719 main.c:39: Successfully initialized entry systems. Initializing engine
+T 23-10-18 19:04:09.254199 1233719 main.c:21: Locating config file...
+T 23-10-18 19:04:09.254315 1233719 main.c:28: Initializing config from file
+T 23-10-18 19:04:09.254410 1233719 main.c:32: Engine config loaded
+I 23-10-18 19:04:09.254420 1233719 main.c:51: Exiting. Freeing last entry systems

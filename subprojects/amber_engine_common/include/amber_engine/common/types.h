@@ -23,7 +23,8 @@ typedef double f64;
 
 typedef size_t usize;
 
-#define ae_tagged_union struct 
+#define ae_tagged_union(_UNION_TYPE_ENUM_) union 
+#define ae_tagged_union_case(_UNION_ENUM_CASE_) 
 
 // Used in union. Since void cannot be used since it has no size, you can use none.
 typedef uint8_t ae_none;

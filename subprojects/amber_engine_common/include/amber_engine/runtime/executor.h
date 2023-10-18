@@ -1,12 +1,7 @@
 #pragma once
 
 #include "../common/types.h"
-#include <stc/cstr.h>
-
-// TODO: allocator support between engine and game.
-#define i_key_str
-#include <stc/cvec.h>
-#undef i_key_str
+#include "amber_engine/memory/handling_strategy.h"
 
 typedef struct ae_Executor ae_Executor;
 
@@ -91,10 +86,14 @@ typedef struct {
 } ae_ExecutionSystem_ProcTable;
 
 typedef struct {
-  cstr identifier;
+  const char* identifier;
   void* system_data;
-  cvec_str dependencies;
+
+  const char** dependencies;
+  int dependencies_count;
 
   ae_ExecutionSystem_ProcTable* proc_table;
+
+  ae_MemoryHandlingStrategy user_data_handling_strategy;
 } ae_ExecutionSystem;
 
