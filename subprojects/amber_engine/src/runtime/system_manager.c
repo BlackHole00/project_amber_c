@@ -1,8 +1,10 @@
 #include "system_manager.h"
 #include "amber_engine/memory/allocator.h"
 #include "amber_engine/memory/handling_strategy.h"
+#include "amber_engine/runtime/system_manager.h"
 #include "src/memory/memory.h"
 #include "stc/ccommon.h"
+#include <string.h>
 
 #define i_key int
 #include <stc/cqueue.h>
@@ -20,8 +22,9 @@ static void ae_executionsystem_free(ae_System *system) {
     for (int i = 0; i < system->dependencies_count; i++) {
       ae_free((void *)(system->dependencies[i]));
     }
-    ae_free((void *)(system->dependencies));
-    ae_free((void *)(system->identifier));
+    ae_free((void*)(system->dependants));
+    ae_free((void*)(system->dependencies));
+    ae_free((void*)(system->identifier));
     ae_free(system->system_data);
 
     break;
@@ -34,6 +37,8 @@ static void ae_executionsystem_free(ae_System *system) {
           system->user_data_handling_strategy.value.move_allocator,
           (void *)(system->dependencies[i]));
     }
+    ae_allocator_free(system->user_data_handling_strategy.value.move_allocator,
+                      (void *)(system->dependants));
     ae_allocator_free(system->user_data_handling_strategy.value.move_allocator,
                       (void *)(system->dependencies));
     ae_allocator_free(system->user_data_handling_strategy.value.move_allocator,
@@ -62,8 +67,23 @@ static void ae_systemmanager_create_execution_order_helper(
     const char* dependency = system->dependencies[i];
     int dependency_idx = cmap_System_Lookup_get(&system_manager->lookup, dependency)->second;
 
+    // visit dependencies
     if (!*cvec_bool_at(visited, dependency_idx)) {
       ae_systemmanager_create_execution_order_helper(system_manager, stack, visited, dependency_idx);
+    }
+
+    // visit dependants
+    c_foreach(other_system, cvec_ae_System, system_manager->systems) {
+      for (int j = 0; j < other_system.ref->dependants_count; j++) {
+        const char* dependant = other_system.ref->identifier;
+
+        if (strcmp(other_system.ref->dependants[j], system->identifier) == 0) {
+          int dependant_idx = cmap_System_Lookup_get(&system_manager->lookup, dependant)->second;
+          if (!*cvec_bool_at(visited, dependant_idx)) {
+            ae_systemmanager_create_execution_order_helper(system_manager, stack, visited, dependant_idx);
+          }
+        }
+      }
     }
   }
 

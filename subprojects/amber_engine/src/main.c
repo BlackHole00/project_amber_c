@@ -48,30 +48,6 @@ int main(void) {
   ae_SystemManager sm;
   ae_systemmanager_init(&sm);
 
-  ae_systemmanager_register_system(&sm, (ae_System) {
-    .identifier = "C",
-    .dependencies = (const char*[]){ "A", "B" },
-    .dependencies_count = 2,
-    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
-      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
-    }
-  });
-  ae_systemmanager_register_system(&sm, (ae_System) {
-    .identifier = "A",
-    .dependencies = (const char*[]){ "B" },
-    .dependencies_count = 1,
-    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
-      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
-    }
-  });
-  ae_systemmanager_register_system(&sm, (ae_System) {
-    .identifier = "B",
-    .dependencies_count = 0,
-    .user_data_handling_strategy = (ae_MemoryHandlingStrategy) {
-      .type = AE_MEMORYHANDLINGSTRATEGYTYPE_KEEP,
-    }
-  });
-
   ae_systemmanager_prepare_for_execution(&sm);
 
   LOG_INFO("Systems: ");

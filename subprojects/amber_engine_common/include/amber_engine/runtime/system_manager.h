@@ -92,6 +92,9 @@ typedef struct {
   const char** dependencies;
   int dependencies_count;
 
+  const char** dependants;
+  int dependants_count;
+
   ae_System_ProcTable* proc_table;
 
   ae_MemoryHandlingStrategy user_data_handling_strategy;

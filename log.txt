@@ -158,3 +158,72 @@ I 23-10-18 22:55:27.305284 1325122 main.c:84: 	 B
 I 23-10-18 22:55:27.305287 1325122 main.c:84: 	 A
 I 23-10-18 22:55:27.305289 1325122 main.c:84: 	 C
 I 23-10-18 22:55:27.305291 1325122 main.c:89: Exiting. Freeing last entry systems
+I 23-10-19 12:34:39.504374 1361139 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-19 12:34:39.504930 1361139 main.c:23: Locating config file...
+T 23-10-19 12:34:39.505015 1361139 main.c:30: Initializing config from file
+T 23-10-19 12:34:39.505063 1361139 main.c:34: Engine config loaded
+I 23-10-19 12:34:39.505074 1361139 main.c:77: Systems: 
+I 23-10-19 12:34:39.505078 1361139 main.c:79: 	 C
+I 23-10-19 12:34:39.505081 1361139 main.c:79: 	 A
+I 23-10-19 12:34:39.505085 1361139 main.c:79: 	 B
+I 23-10-19 12:34:39.505088 1361139 main.c:82: Execution order: 
+I 23-10-19 12:34:39.505091 1361139 main.c:84: 	 B
+I 23-10-19 12:34:39.505095 1361139 main.c:84: 	 A
+I 23-10-19 12:34:39.505098 1361139 main.c:84: 	 C
+I 23-10-19 12:34:39.505101 1361139 main.c:89: Exiting. Freeing last entry systems
+I 23-10-19 15:19:35.569062 1405438 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-19 15:19:35.570045 1405438 main.c:23: Locating config file...
+T 23-10-19 15:19:35.570172 1405438 main.c:30: Initializing config from file
+T 23-10-19 15:19:35.570257 1405438 main.c:34: Engine config loaded
+I 23-10-19 15:19:35.570269 1405438 main.c:77: Systems: 
+I 23-10-19 15:19:35.570275 1405438 main.c:79: 	 C
+I 23-10-19 15:19:35.570281 1405438 main.c:79: 	 A
+I 23-10-19 15:19:35.570286 1405438 main.c:79: 	 B
+I 23-10-19 15:19:35.570291 1405438 main.c:82: Execution order: 
+I 23-10-19 15:19:35.570296 1405438 main.c:84: 	 B
+I 23-10-19 15:19:35.570301 1405438 main.c:84: 	 A
+I 23-10-19 15:19:35.570306 1405438 main.c:84: 	 C
+I 23-10-19 15:19:35.570311 1405438 main.c:89: Exiting. Freeing last entry systems
+I 23-10-19 15:20:30.759128 1406134 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-19 15:20:30.760112 1406134 main.c:23: Locating config file...
+T 23-10-19 15:20:30.760248 1406134 main.c:30: Initializing config from file
+T 23-10-19 15:20:30.760344 1406134 main.c:34: Engine config loaded
+I 23-10-19 15:20:30.760357 1406134 main.c:76: Systems: 
+I 23-10-19 15:20:30.760363 1406134 main.c:78: 	 C
+I 23-10-19 15:20:30.760369 1406134 main.c:78: 	 A
+I 23-10-19 15:20:30.760374 1406134 main.c:78: 	 B
+I 23-10-19 15:20:30.760379 1406134 main.c:81: Execution order: 
+I 23-10-19 15:20:30.760384 1406134 main.c:83: 	 A
+I 23-10-19 15:20:30.760388 1406134 main.c:83: 	 B
+I 23-10-19 15:20:30.760393 1406134 main.c:83: 	 C
+I 23-10-19 15:20:30.760399 1406134 main.c:88: Exiting. Freeing last entry systems
+I 23-10-19 17:52:01.815102 1440303 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-19 17:52:01.816088 1440303 main.c:23: Locating config file...
+T 23-10-19 17:52:01.816225 1440303 main.c:30: Initializing config from file
+T 23-10-19 17:52:01.816319 1440303 main.c:34: Engine config loaded
+I 23-10-19 17:52:01.816333 1440303 main.c:84: Systems: 
+I 23-10-19 17:52:01.816338 1440303 main.c:86: 	 C
+I 23-10-19 17:52:01.816344 1440303 main.c:86: 	 A
+I 23-10-19 17:52:01.816350 1440303 main.c:86: 	 B
+I 23-10-19 17:52:01.816355 1440303 main.c:86: 	 B
+I 23-10-19 17:52:01.816360 1440303 main.c:89: Execution order: 
+I 23-10-19 17:52:01.816365 1440303 main.c:91: 	 A
+I 23-10-19 17:52:01.816370 1440303 main.c:91: 	 B
+I 23-10-19 17:52:01.816375 1440303 main.c:91: 	 C
+I 23-10-19 17:52:01.816380 1440303 main.c:91: 	 B
+I 23-10-19 17:52:01.816386 1440303 main.c:96: Exiting. Freeing last entry systems
+I 23-10-19 17:58:52.445776 1446395 main.c:41: Successfully initialized entry systems. Initializing engine
+T 23-10-19 17:58:52.447013 1446395 main.c:23: Locating config file...
+T 23-10-19 17:58:52.447195 1446395 main.c:30: Initializing config from file
+T 23-10-19 17:58:52.447292 1446395 main.c:34: Engine config loaded
+I 23-10-19 17:58:52.447308 1446395 main.c:84: Systems: 
+I 23-10-19 17:58:52.447313 1446395 main.c:86: 	 C
+I 23-10-19 17:58:52.447319 1446395 main.c:86: 	 A
+I 23-10-19 17:58:52.447324 1446395 main.c:86: 	 B
+I 23-10-19 17:58:52.447330 1446395 main.c:86: 	 D
+I 23-10-19 17:58:52.447335 1446395 main.c:89: Execution order: 
+I 23-10-19 17:58:52.447340 1446395 main.c:91: 	 A
+I 23-10-19 17:58:52.447346 1446395 main.c:91: 	 D
+I 23-10-19 17:58:52.447351 1446395 main.c:91: 	 B
+I 23-10-19 17:58:52.447356 1446395 main.c:91: 	 C
+I 23-10-19 17:58:52.447362 1446395 main.c:96: Exiting. Freeing last entry systems
